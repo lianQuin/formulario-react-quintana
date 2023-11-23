@@ -49,7 +49,7 @@ const validationSchema = Yup.object().shape({
     .min(8, "*La contraseña debe tener al menos 8 caracteres")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-      "*La contraseña debe tener al menos una letra mayúscula, una letra minúscula y un número"
+      "*al menos una mayúscula, una letra minúscula y un número"
     )
     .required("*La contraseña es obligatoria"),
   confirmarPassword: Yup.string()
@@ -114,7 +114,7 @@ const Registro = () => {
           {({ isSubmitting, values, errors, touched }) => {
             setFormValues(values);
             return (
-              <Form>
+              <Form noValidate>
                 <FormControl id="nombre" isRequired>
                   <FormLabel>Nombre</FormLabel>
                   <Field as={Input} type="text" name="nombre" isDisabled={isSubmitting} />
@@ -159,9 +159,7 @@ const Registro = () => {
               ¡Gracias por registrarte, {formValues.nombre}! Hemos enviado un correo electrónico a {formValues.email} para confirmar tu registro.<strong>Y gracias profe por esas horas de más que dio clases para ayudarnos!!</strong>
             </AlertDialogBody>
             <AlertDialogFooter>
-              <Button onClick={onClose}>
-                Cerrar
-              </Button>
+             
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialogOverlay>
